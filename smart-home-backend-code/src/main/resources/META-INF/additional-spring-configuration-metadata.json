@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "netty",
+      "type": "java.lang.String",
+      "description": "Description for netty."
+  }
+] }

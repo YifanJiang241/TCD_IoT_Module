@@ -1,0 +1,56 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+			}
+		},
+		{
+			"path" : "pages/listMes/listMes",
+			"style" : 
+			{
+				"navigationBarTitleText" : "deviceList",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/dataShow/dataShow",
+			"style" : 
+			{
+				"navigationBarTitleText" : "deviceList",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/register/register",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#999999", // 表示tabBar item项中文字默认的颜色
+		"selectedColor": "#3D7CFF", // 表示tabBar item项中文字选中的颜色
+		"borderStyle": "black",// 表示tabBar 上边框的颜色，目前只支持 black/white
+		"backgroundColor": "#c4e6ff",// 表示 tabBar 的背景颜色
+		"list": [
+			{
+				"pagePath": "pages/dataShow/dataShow",
+				"text": "dataShow"
+			},
+			{
+				"pagePath": "pages/listMes/listMes",
+				"text": "device"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

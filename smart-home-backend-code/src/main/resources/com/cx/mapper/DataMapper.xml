@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cx.mapper.DataMapper">
+
+<!--    <insert id="insertDeviceMes">-->
+<!--        insert into deviceCarMes(deviceType,deviceId,speed,tem,luminosity,lumValue,voValue,distance,Location,nowTime,nowTimeDate)-->
+<!--        values (#{deviceType},#{deviceId},#{speed},#{tem},#{luminosity},#{lumValue},#{voValue},#{distance},#{Location},#{nowTime},#{nowTimeDate})-->
+<!--    </insert>-->
+
+    <insert id="insertDeviceMes">
+        insert into device_mes (deviceType, temp, hum, Curtains, lumValue, Door, lightFlag, pinBuzzerFlag, nowTime, LeaveFlag, SleepFlag, nowTimeDate)
+        values (#{deviceType}, #{temp}, #{hum}, #{Curtains}, #{lumValue}, #{Door}, #{lightFlag}, #{pinBuzzerFlag}, #{nowTime}, #{LeaveFlag}, #{SleepFlag}, #{nowTimeDate})
+    </insert>
+    <insert id="insertLogin">
+        insert into login(account,password)
+        values (#{account},#{password})
+    </insert>
+    <select id="selectDeviceAll" resultType="com.cx.pojo.DeviceMes">
+        select * from deviceCarMes
+        where nowTimeDate <![CDATA[>=]]>#{startTime} and nowTime<![CDATA[ <= ]]>#{endTime} and deviceId=#{deviceId}
+    </select>
+    <select id="selectLogin" resultType="com.cx.pojo.Login">
+         select *from login where account=#{account} and password = #{password}
+    </select>
+
+    <select id="selectByAccount" resultType="com.cx.pojo.Login">
+        select  *from login where account=#{account}
+    </select>
+
+
+    <!--#######################-->
+    <!--<delete id="deleteBookById">
+        delete from BookMes where id=#{id}
+    </delete>-->
+   <!-- <select id="selectBook" resultType="com.cx.pojo.text02BookMes">
+        select * from text02BookMes
+        where nowTimeDate <![CDATA[>=]]>#{startTime} and nowTime<![CDATA[ <= ]]>#{endTime}
+        <if test="bookId!=null and bookId!=''">
+            and bookId=#{bookId}
+        </if>
+        <if test="borrower!=null and borrower!=''">
+            and borrower=#{borrower}
+        </if>
+
+    </select>-->
+    <!--<select id="selectByBookId" resultType="com.cx.pojo.DeviceMes">
+        select * from bookMes where bookId=#{bookId}
+    </select>
+    <select id="selectByUserId" resultType="com.cx.pojo.ToMes">
+        select * from text02UserMes where userId=#{userId}
+    </select>-->
+
+
+</mapper>
