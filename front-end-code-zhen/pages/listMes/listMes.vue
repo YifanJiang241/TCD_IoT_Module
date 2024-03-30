@@ -27,7 +27,7 @@
 				
 				<button @click="left()" class="buttonLast" v-if="curtains==0">Open the curtains</button>
 				<button @click="leftClose()" class="buttonLast" v-else>Close the curtains</button>
-				<button @click="right()" class="buttonLast" v-if="door==0">Open the door</button>
+				<button @click="right()" class="buttonLast" v-if="!door">Open the door</button>
 				<button @click="rightClose()" class="buttonLast" v-else>Close the door</button>
 			</view>
 		</view>

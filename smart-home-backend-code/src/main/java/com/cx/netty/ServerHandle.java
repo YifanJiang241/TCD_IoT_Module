@@ -27,7 +27,7 @@ public class ServerHandle extends SimpleChannelInboundHandler<Object> {
 
     @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, Object s) throws Exception {
-        //System.out.println(s.toString());
+        System.out.println(s.toString());
         JSONObject jsonObject = JSONObject.parseObject(String.valueOf(s));
         Date date = new Date();
         String time = dateFormat.format(date);

@@ -10,7 +10,7 @@
 			_this.socketTask=uni.connectSocket({
 				//url:'ws://192.168.1.100:8099/chat',
 				// url:'ws://192.168.0.101:8099/chat',
-				url:'ws://172.18.192.1:8099/chat',
+				url:'ws://192.168.195.170:8099/chat',
 				
 				
 				//url:'ws://192.168.1.101:8099/chat',

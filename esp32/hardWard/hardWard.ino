@@ -1,8 +1,11 @@
 #include <ArduinoJson.h>//jSON库，用来解析后端服务器的JSO操控指令
 #include <WiFi.h>
-const char* ssid = "222";                                                        //路由器的ID和密码
-const char* pswd = "00000000";
-const char * ServerAddress = "192.168.43.151";                                   //网络调试助手设置的IP和端口，通过ipconfig获取电脑IP
+bool allFlag = false; // 或根据需要将初始值设置为true
+
+
+const char* ssid = "iQOO 11S";                                                        //路由器的ID和密码
+const char* pswd = "Pedro0402";
+const char * ServerAddress = "172.18.192.1";                                   //网络调试助手设置的IP和端口，通过ipconfig获取电脑IP
 const int ServerPort = 8089;                                                     //网络调试助手设置的端口号
 WiFiClient client;
 //温湿度，VCC接3v3，gnd接地，数据引脚sda接开发板P21，引脚scl接开发板P22
@@ -27,9 +30,15 @@ void WiFi_Connect()
 //定时器传数据
 #include <Ticker.h>
 Ticker ticker;// 建立Ticker用于实现定时功能
+// void sendMes() {
+//   client.print("{\"deviceType\":\"allData\",\"temp\":\"" + temp + "\",\"hum\":\"" + hum + "\",\"Curtains\":\"" + 1 + "\",\"lumValue\":\"" + 100 + "\",\"Door\":\"" + 1 + "\",\"pinBuzzerFlag\":\"" + pinBuzzerFlag + "\"}");
+// }
+
 void sendMes() {
-  client.print("{\"deviceType\":\"allData\",\"temp\":\"" + temp + "\",\"hum\":\"" + hum + "\",\"Curtains\":\"" + 1 + "\",\"lumValue\":\"" + 100 + "\",\"Door\":\"" + 1 + "\",\"pinBuzzerFlag\":\"" + pinBuzzerFlag + "\"}");
+  String message = "{\"deviceType\":\"allData\",\"temp\":\"" + String(temp) + "\",\"hum\":\"" + String(hum) + "\",\"Curtains\":\"" + String(1) + "\",\"lumValue\":\"" + String(100) + "\",\"Door\":\"" + String(1) + "\",\"pinBuzzerFlag\":\"" + String(pinBuzzerFlag) + "\"}";
+  client.print(message);
 }
+
 
 void setup() {
   Serial.begin(115200);
