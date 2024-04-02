@@ -25,9 +25,9 @@
 				</view>
 			</view>
 			<view class="sumbit-btn">
-				<button class="button" style="background-color: #33ccff;font-size: 30rpx;" type="primary" @click="register()">register now</button>
+				<button class="button" style="background-color: #33ccff;font-size: 30rpx;" type="primary" @click="register()">立即注册</button>
 				<button class="button" @click="toLogin()" style="background-color: #33ccff;font-size: 30rpx;margin-top: 3%;"	
-					type="primary">login</button>
+					type="primary">返回登陆</button>
 			</view>
 		</view>
 		<view class="shadow shadow-1"></view>
@@ -49,16 +49,16 @@
 		methods: {
 			//注册
 			register(){
-				// var regPhone = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
-				// if (!regPhone.test(this.telNum)) {
-				// 	uni.showToast({
-				// 		title: 'Mobile phone format error!',
-				// 		duration: 1000,
-				// 		icon:'error'
-				// 	});
-				// 	this.telNum = ''
-				// 	return;
-				// }
+				var regPhone = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+				if (!regPhone.test(this.telNum)) {
+					uni.showToast({
+						title: 'Mobile phone format error!',
+						duration: 1000,
+						icon:'error'
+					});
+					this.telNum = ''
+					return;
+				}
 				if(this.password != this.password1){
 					uni.showToast({
 						title: 'Password inconsistency!',
@@ -70,7 +70,7 @@
 				}
 				let that = this
 				uni.request({
-				    url: 'http://localhost:8090/allData/login/insertUser', //仅为示例，并非真实接口地址。
+				    url: 'http://192.168.195.170:8090/allData/login/insertUser', //仅为示例，并非真实接口地址。
 					method:'post',
 				    data: {
 				        userName: that.telNum,

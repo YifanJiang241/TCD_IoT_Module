@@ -2,6 +2,10 @@
 	<view>
 		<view>
 			<view class="bookMes">
+				<view class="bookMesHead">Family status</view>
+				<input placeholder="error" disabled="false" :value="safeType"/>
+			</view>
+			<view class="bookMes">
 				<view class="bookMesHead">luminosity(lux)</view>
 				<input placeholder="error" disabled="false" :value="deviceData.lumValue"/>
 			</view>
@@ -22,8 +26,8 @@
 			<view v-if="allFlag">
 				<button @click="turnOn()" class="buttonLast" v-if="light == 0">turn on the light</button>
 				<button @click="turnOff()" class="buttonLast" v-else>Turn off the lights</button>
-				<button @click="simulation()" class="buttonLast" v-if="simulationFlag==0">Turn on the buzzer</button>
-				<button @click="simulationClose()" class="buttonLast" v-else>Turn off the buzzer</button>
+				<!-- <button @click="simulation()" class="buttonLast" v-if="simulationFlag==0">Turn on the buzzer</button>
+				<button @click="simulationClose()" class="buttonLast" v-else>Turn off the buzzer</button> -->
 				
 				<button @click="left()" class="buttonLast" v-if="curtains==0">Open the curtains</button>
 				<button @click="leftClose()" class="buttonLast" v-else>Close the curtains</button>
@@ -40,13 +44,14 @@
 		data() {
 			return {
 				deviceData:{},
-				simulationFlag:1,
+				simulationFlag:'',
 				curtains:1,
 				door:1,
 				light:1,
 				LeaveFlag:1,
 				SleepFlag:1,
-				allFlag:false
+				allFlag:false,
+				safeType:'Safe'
 			}
 		},
 		onLoad(options) {
@@ -69,6 +74,7 @@
 			},
 			toSleep(){
 				this.SleepFlag = 1
+				this.allFlag = false
 				const mes={
 					deviceType:'toSleep',
 				}
@@ -193,7 +199,11 @@
 						this.oldDeviceData=this.$store.state.allData
 						if(this.oldDeviceData.deviceId==this.deviceId){
 							this.deviceData=this.oldDeviceData
-							this.simulationFlag = this.deviceData.pinBuzzerFlag
+							if(!this.deviceData.pinBuzzerFlag){
+								this.safeType = "Warn!"
+							}else{
+								this.safeType = "Safe"
+							}
 							this.light = this.deviceData.lightFlag
 							this.curtains = this.deviceData.curtains
 							this.door = this.deviceData.door

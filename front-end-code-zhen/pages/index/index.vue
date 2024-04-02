@@ -49,7 +49,7 @@
 			login(){
 				var that = this;
 				uni.request({
-				    url: 'http://localhost:8090/allData/login/loginMsg', //仅为示例，并非真实接口地址。
+				    url: 'http://192.168.195.170:8090/allData/login/loginMsg', //仅为示例，并非真实接口地址。
 					method:'post',
 				    data: {
 				        account: that.logindata.account,
